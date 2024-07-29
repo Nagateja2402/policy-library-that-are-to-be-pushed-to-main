@@ -1,0 +1,11 @@
+name: Acceptance
+on: workflow_dispatch
+
+jobs:
+  acceptance:
+    uses: hashicorp/policy-library-workflows-common/.github/workflows/acceptance.yml@main
+    with:
+      tfc-organization: ${{ vars.TF_CLOUD_ORGANIZATION }}
+      tfc-project: ${{ vars.TF_CLOUD_PROJECT }}
+      tfc-hostname: ${{ vars.TF_CLOUD_HOSTNAME }}
+    secrets: inherit
