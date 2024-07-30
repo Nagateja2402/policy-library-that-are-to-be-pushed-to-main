@@ -28,6 +28,6 @@ resource "aws_iam_role" "test_role" {
 }
 
 module "sagemaker-notebook-instance" {
-  source                          = "./sagemaker-notebook-instance"
+  source               = "./sagemaker-notebook-instance"
   root_access_variable = "Disabled"
 }

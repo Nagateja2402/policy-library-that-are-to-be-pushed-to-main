@@ -2,7 +2,7 @@ resource "aws_sagemaker_notebook_instance" "simple_notebook_instance" {
   name                   = "my-notebook-instance"
   role_arn               = aws_iam_role.test_role.arn
   direct_internet_access = "Disabled"
-  root_access = var.root_access_variable
+  root_access            = var.root_access_variable
   instance_type          = "ml.t2.medium"
   tags = {
     Name = "foo"

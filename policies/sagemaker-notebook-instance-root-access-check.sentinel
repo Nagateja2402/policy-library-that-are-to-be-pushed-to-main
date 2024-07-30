@@ -13,8 +13,8 @@ const = {
 	"policy_name": "sagemaker-notebook-instance-root-access-check",
 	"message":     "Attribute 'root_access' should be Disabled for AWS Sagemaker Notebook Instance. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-3 for more details.",
 	"resource_aws_sagemaker_notebook_instance": "aws_sagemaker_notebook_instance",
-	"root_access_value_enabled":     "Enabled",
-	"root_access_value_disabled":    "Disabled",
+	"root_access_value_enabled":                "Enabled",
+	"root_access_value_disabled":               "Disabled",
 }
 
 # Functions
