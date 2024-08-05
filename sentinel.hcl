@@ -8,12 +8,3 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
-policy "sagemaker-notebook-instance-root-access-check" {
-  source = "./policies/sagemaker-notebook-instance-root-access-check.sentinel"
-  enforcement_level = "advisory"
-}
-
-policy "sagemaker-endpoint-config-prod-instance-count-check" {
-  source = "./policies/sagemaker-endpoint-config-prod-instance-count-check.sentinel"
-  enforcement_level = "advisory"
-}
