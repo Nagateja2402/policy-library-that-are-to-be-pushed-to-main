@@ -1,5 +1,5 @@
-# This policy checks if resources of type 'aws_redshift_cluster' refernced to the 
-#resources of type 'aws_redshift_parameter_group' and having the 'require_ssl' 
+# This policy checks if resources of type 'aws_redshift_cluster' refernced to the
+#resources of type 'aws_redshift_parameter_group' and having the 'require_ssl'
 #set to 'true'
 
 import "tfplan/v2" as tfplan
@@ -13,9 +13,9 @@ import "strings"
 
 # Constants
 const = {
-	"policy_name":                   "redshift-cluster-public-access-check",
-	"message":                       "Parameter 'require_ssl' should be true for AWS Redshift Parameter Group. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-2 for more details.",
-	"resource_aws_redshift_cluster": "aws_redshift_cluster",
+	"policy_name":                           "redshift-cluster-public-access-check",
+	"message":                               "Parameter 'require_ssl' should be true for AWS Redshift Parameter Group. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-2 for more details.",
+	"resource_aws_redshift_cluster":         "aws_redshift_cluster",
 	"resource_aws_redshift_parameter_group": "aws_redshift_parameter_group",
 	"address":        "address",
 	"module_prefix":  "module.",
@@ -68,7 +68,7 @@ resource_address_without_module_address = func(res) {
 redshift_clusters = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshift_cluster).resources
 redshift_parameter_groups = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshift_parameter_group).resources
 config_resources = tf.config(tfconfig.resources).resources
-violations = get_violations(redshift_clusters,redshift_parameter_groups,config_resources)
+violations = get_violations(redshift_clusters, redshift_parameter_groups, config_resources)
 
 summary = {
 	"policy_name": const.policy_name,
