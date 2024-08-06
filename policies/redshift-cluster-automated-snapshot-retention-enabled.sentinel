@@ -15,7 +15,7 @@ param automated_snapshot_retention_period_upper_limit default 35
 # Constants
 
 const = {
-	"policy_name":                "redshift-cluster-automated-snapshot-retention-enabled",
+	"policy_name":                   "redshift-cluster-automated-snapshot-retention-enabled",
 	"resource_aws_redshift_cluster": "aws_redshift_cluster",
 }
 

@@ -12,6 +12,6 @@ provider "aws" {
 }
 
 module "redshift_cluster" {
-  source = "./redshift-cluster"
+  source                                       = "./redshift-cluster"
   automated_snapshot_retention_period_variable = 10
 }
