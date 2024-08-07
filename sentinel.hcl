@@ -16,3 +16,13 @@ policy "redshift-cluster-automated-snapshot-retention-enabled" {
   automated_snapshot_retention_period_upper_limit = 35
  }
 }
+
+policy "redshift-cluster-audit-logging-enabled" {
+ source = "./policies/redshift-cluster-audit-logging-enabled.sentinel"
+ enforcement_level = "advisory"
+}
+
+policy "redshift-cluster-maintenance-settings-check" {
+ source = "./policies/redshift-cluster-maintenance-settings-check.sentinel"
+ enforcement_level = "advisory"
+}
