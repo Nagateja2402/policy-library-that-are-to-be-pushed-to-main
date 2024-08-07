@@ -1,4 +1,4 @@
-# This policy checks if resources of type 'aws_redshift_cluster' have the 'allow_version_upgrade'
+# This policy checks if resources of type 'aws_redshift_cluster' have the 'enhanced_vpc_routing'
 # attribute set to true
 
 import "tfplan/v2" as tfplan
@@ -9,8 +9,8 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                   "redshift-cluster-maintenance-settings-check",
-	"message":                       "Attribute 'allow_version_upgrade' should be true for AWS Redshift Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-6 for more details.",
+	"policy_name":                   "redshift-cluster-enhanced-vpc-routing-enabled",
+	"message":                       "Attribute 'enhanced_vpc_routing' should be true for AWS Redshift Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-7 for more details.",
 	"resource_aws_redshift_cluster": "aws_redshift_cluster",
 }
 
@@ -18,7 +18,7 @@ const = {
 
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		return maps.get(res, "values.allow_version_upgrade", false) is true
+		return maps.get(res, "values.enhanced_vpc_routing", false) is true
 	})
 }
 
