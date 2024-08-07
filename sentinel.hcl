@@ -8,11 +8,6 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
-policy "redshift-cluster-should-be-encrypted-at-transit" {
- source = "./policies/redshift-cluster-should-be-encrypted-at-transit.sentinel"
- enforcement_level = "advisory"
-}
-
 policy "redshift-cluster-automated-snapshot-retention-enabled" {
  source = "./policies/redshift-cluster-automated-snapshot-retention-enabled.sentinel"
  enforcement_level = "advisory"
