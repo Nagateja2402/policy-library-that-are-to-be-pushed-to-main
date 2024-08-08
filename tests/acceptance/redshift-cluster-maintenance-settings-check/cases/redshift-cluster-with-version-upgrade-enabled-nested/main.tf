@@ -12,6 +12,6 @@ provider "aws" {
 }
 
 module "redshift_cluster" {
-  source = "./redshift-cluster"
+  source                   = "./redshift-cluster"
   version_upgrade_variable = true
 }

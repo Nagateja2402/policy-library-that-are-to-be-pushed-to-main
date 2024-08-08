@@ -12,6 +12,6 @@ provider "aws" {
 }
 
 module "redshift-cluster" {
-  source = "./redshift-cluster"
+  source                   = "./redshift-cluster"
   master_username_variable = "redshift_cluster_admin"
 }

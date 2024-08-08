@@ -12,6 +12,6 @@ provider "aws" {
 }
 
 module "redshift-cluster" {
-  source = "./redshift-cluster"
+  source           = "./redshift-cluster"
   logging_variable = true
 }
