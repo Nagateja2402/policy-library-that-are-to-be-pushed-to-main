@@ -36,3 +36,8 @@ policy "redshift-cluster-default-admin-check" {
  source = "./policies/redshift-cluster-default-admin-check.sentinel"
  enforcement_level = "advisory"
 }
+
+policy "redshift-cluster-default-db-name-check" {
+ source = "./policies/redshift-cluster-default-db-name-check.sentinel"
+ enforcement_level = "advisory"
+}
