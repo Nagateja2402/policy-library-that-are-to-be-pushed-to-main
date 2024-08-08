@@ -15,7 +15,7 @@ resource "aws_redshift_cluster" "rscluster" {
   cluster_identifier                  = "tf-redshift-cluster"
   master_password                     = "Newpass12345678"
   master_username                     = "awsuser"
-  database_name = "dev"
+  database_name                       = "dev"
   node_type                           = "dc1.large"
   cluster_type                        = "single-node"
   publicly_accessible                 = true

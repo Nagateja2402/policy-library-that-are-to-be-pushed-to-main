@@ -12,7 +12,7 @@ const = {
 	"policy_name":                   "redshift-cluster-default-db-name-check",
 	"message":                       "Attribute 'database_name' should not be 'dev' (default value) for AWS Redshift Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-9 for more details.",
 	"resource_aws_redshift_cluster": "aws_redshift_cluster",
-	"database_name_default_value": "dev",
+	"database_name_default_value":   "dev",
 }
 
 # Functions
