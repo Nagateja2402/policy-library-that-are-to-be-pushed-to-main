@@ -18,7 +18,7 @@ resource "aws_redshift_cluster" "rscluster" {
   master_password                     = "Newpass12345678"
   node_type                           = "dc1.large"
   cluster_type                        = "single-node"
-  encrypted = true
+  encrypted                           = true
   publicly_accessible                 = true
   automated_snapshot_retention_period = 10
   allow_version_upgrade               = false

@@ -12,6 +12,6 @@ provider "aws" {
 }
 
 module "redshift_cluster" {
-  source                   = "./redshift-cluster"
-  encrypted_variable =  true
+  source             = "./redshift-cluster"
+  encrypted_variable = true
 }
