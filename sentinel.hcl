@@ -41,3 +41,8 @@ policy "redshift-cluster-default-db-name-check" {
  source = "./policies/redshift-cluster-default-db-name-check.sentinel"
  enforcement_level = "advisory"
 }
+
+policy "redshift-cluster-should-be-encrypted-at-rest" {
+  source = "./policies/redshift-cluster-should-be-encrypted-at-rest.sentinel"
+  enforcement_level = "advisory"
+}
