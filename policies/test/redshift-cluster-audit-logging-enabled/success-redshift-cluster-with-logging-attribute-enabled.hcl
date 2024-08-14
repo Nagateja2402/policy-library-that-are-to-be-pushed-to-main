@@ -5,6 +5,12 @@ mock "tfplan/v2" {
 }
 
 
+mock "tfconfig/v2" {
+	module {
+		source = "./mocks/policy-success-redshift-cluster-with-logging-attribute-enabled/mock-tfconfig-v2.sentinel"
+	}
+}
+
 
 import "plugin" "tfresources" {
 	source = "../../../plugins/darwin/arm64/sentinel-plugin-tfresources"

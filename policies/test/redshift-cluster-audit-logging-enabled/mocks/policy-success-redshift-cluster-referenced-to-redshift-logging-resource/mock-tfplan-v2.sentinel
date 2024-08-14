@@ -46,6 +46,27 @@ planned_values = {
 				"timeouts":                             null,
 			},
 		},
+		"aws_redshift_logging.rscluster-logging": {
+			"address":        "aws_redshift_logging.rscluster-logging",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "rscluster-logging",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_redshift_logging",
+			"values": {
+				"bucket_name":          null,
+				"log_destination_type": "cloudwatch",
+				"log_exports": [
+					"connectionlog",
+					"userlog",
+				],
+				"s3_key_prefix": null,
+			},
+		},
 	},
 }
 
@@ -123,6 +144,39 @@ resource_changes = {
 		"provider_name":  "registry.terraform.io/hashicorp/aws",
 		"type":           "aws_redshift_cluster",
 	},
+	"aws_redshift_logging.rscluster-logging": {
+		"address": "aws_redshift_logging.rscluster-logging",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bucket_name":          null,
+				"log_destination_type": "cloudwatch",
+				"log_exports": [
+					"connectionlog",
+					"userlog",
+				],
+				"s3_key_prefix": null,
+			},
+			"after_unknown": {
+				"cluster_identifier": true,
+				"id":                 true,
+				"log_exports": [
+					false,
+					false,
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "rscluster-logging",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_redshift_logging",
+	},
 }
 
 resource_drift = {}
@@ -185,6 +239,31 @@ raw = {
 					"schema_version":      0,
 					"type":                "aws_redshift_cluster",
 				},
+				{
+					"address": "aws_redshift_logging.rscluster-logging",
+					"expressions": {
+						"cluster_identifier": {
+							"references": [
+								"aws_redshift_cluster.rscluster.id",
+								"aws_redshift_cluster.rscluster",
+							],
+						},
+						"log_destination_type": {
+							"constant_value": "cloudwatch",
+						},
+						"log_exports": {
+							"constant_value": [
+								"connectionlog",
+								"userlog",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "rscluster-logging",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_redshift_logging",
+				},
 			],
 		},
 	},
@@ -240,9 +319,40 @@ raw = {
 						"timeouts":                             null,
 					},
 				},
+				{
+					"address":        "aws_redshift_logging.rscluster-logging",
+					"mode":           "managed",
+					"name":           "rscluster-logging",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"log_exports": [
+							false,
+							false,
+						],
+					},
+					"type": "aws_redshift_logging",
+					"values": {
+						"bucket_name":          null,
+						"log_destination_type": "cloudwatch",
+						"log_exports": [
+							"connectionlog",
+							"userlog",
+						],
+						"s3_key_prefix": null,
+					},
+				},
 			],
 		},
 	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_redshift_cluster.rscluster",
+		},
+	],
 	"resource_changes": [
 		{
 			"address": "aws_redshift_cluster.rscluster",
@@ -322,7 +432,44 @@ raw = {
 			"provider_name": "registry.terraform.io/hashicorp/aws",
 			"type":          "aws_redshift_cluster",
 		},
+		{
+			"address": "aws_redshift_logging.rscluster-logging",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bucket_name":          null,
+					"log_destination_type": "cloudwatch",
+					"log_exports": [
+						"connectionlog",
+						"userlog",
+					],
+					"s3_key_prefix": null,
+				},
+				"after_sensitive": {
+					"log_exports": [
+						false,
+						false,
+					],
+				},
+				"after_unknown": {
+					"cluster_identifier": true,
+					"id":                 true,
+					"log_exports": [
+						false,
+						false,
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "rscluster-logging",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_redshift_logging",
+		},
 	],
 	"terraform_version": "1.9.4",
-	"timestamp":         "2024-08-13T06:12:56Z",
+	"timestamp":         "2024-08-13T05:44:49Z",
 }

@@ -3,13 +3,13 @@ terraform_version = "1.9.4"
 planned_values = {
 	"outputs": {},
 	"resources": {
-		"aws_redshift_cluster.rscluster": {
-			"address":        "aws_redshift_cluster.rscluster",
+		"module.redshift-cluster.aws_redshift_cluster.rscluster": {
+			"address":        "module.redshift-cluster.aws_redshift_cluster.rscluster",
 			"depends_on":     [],
 			"deposed_key":    "",
 			"index":          null,
 			"mode":           "managed",
-			"module_address": "",
+			"module_address": "module.redshift-cluster",
 			"name":           "rscluster",
 			"provider_name":  "registry.terraform.io/hashicorp/aws",
 			"tainted":        false,
@@ -46,14 +46,35 @@ planned_values = {
 				"timeouts":                             null,
 			},
 		},
+		"module.redshift-cluster.aws_redshift_logging.rscluster-logging": {
+			"address":        "module.redshift-cluster.aws_redshift_logging.rscluster-logging",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.redshift-cluster",
+			"name":           "rscluster-logging",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_redshift_logging",
+			"values": {
+				"bucket_name":          null,
+				"log_destination_type": "cloudwatch",
+				"log_exports": [
+					"connectionlog",
+					"userlog",
+				],
+				"s3_key_prefix": null,
+			},
+		},
 	},
 }
 
 variables = {}
 
 resource_changes = {
-	"aws_redshift_cluster.rscluster": {
-		"address": "aws_redshift_cluster.rscluster",
+	"module.redshift-cluster.aws_redshift_cluster.rscluster": {
+		"address": "module.redshift-cluster.aws_redshift_cluster.rscluster",
 		"change": {
 			"actions": [
 				"create",
@@ -118,10 +139,43 @@ resource_changes = {
 		"deposed":        "",
 		"index":          null,
 		"mode":           "managed",
-		"module_address": "",
+		"module_address": "module.redshift-cluster",
 		"name":           "rscluster",
 		"provider_name":  "registry.terraform.io/hashicorp/aws",
 		"type":           "aws_redshift_cluster",
+	},
+	"module.redshift-cluster.aws_redshift_logging.rscluster-logging": {
+		"address": "module.redshift-cluster.aws_redshift_logging.rscluster-logging",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"bucket_name":          null,
+				"log_destination_type": "cloudwatch",
+				"log_exports": [
+					"connectionlog",
+					"userlog",
+				],
+				"s3_key_prefix": null,
+			},
+			"after_unknown": {
+				"cluster_identifier": true,
+				"id":                 true,
+				"log_exports": [
+					false,
+					false,
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.redshift-cluster",
+		"name":           "rscluster-logging",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_redshift_logging",
 	},
 }
 
@@ -144,108 +198,176 @@ raw = {
 			},
 		},
 		"root_module": {
-			"resources": [
-				{
-					"address": "aws_redshift_cluster.rscluster",
-					"expressions": {
-						"allow_version_upgrade": {
-							"constant_value": true,
-						},
-						"automated_snapshot_retention_period": {
-							"constant_value": 10,
-						},
-						"cluster_identifier": {
-							"constant_value": "tf-redshift-cluster",
-						},
-						"cluster_type": {
-							"constant_value": "single-node",
-						},
-						"database_name": {
-							"constant_value": "newdb",
-						},
-						"enhanced_vpc_routing": {
-							"constant_value": true,
-						},
-						"master_password": {
-							"constant_value": "Newpass12345678",
-						},
-						"master_username": {
-							"constant_value": "exampleuser",
-						},
-						"node_type": {
-							"constant_value": "dc1.large",
-						},
-						"publicly_accessible": {
-							"constant_value": true,
-						},
+			"module_calls": {
+				"redshift-cluster": {
+					"module": {
+						"resources": [
+							{
+								"address": "aws_redshift_cluster.rscluster",
+								"expressions": {
+									"allow_version_upgrade": {
+										"constant_value": true,
+									},
+									"automated_snapshot_retention_period": {
+										"constant_value": 10,
+									},
+									"cluster_identifier": {
+										"constant_value": "tf-redshift-cluster",
+									},
+									"cluster_type": {
+										"constant_value": "single-node",
+									},
+									"database_name": {
+										"constant_value": "newdb",
+									},
+									"enhanced_vpc_routing": {
+										"constant_value": true,
+									},
+									"master_password": {
+										"constant_value": "Newpass12345678",
+									},
+									"master_username": {
+										"constant_value": "exampleuser",
+									},
+									"node_type": {
+										"constant_value": "dc1.large",
+									},
+									"publicly_accessible": {
+										"constant_value": true,
+									},
+								},
+								"mode":                "managed",
+								"name":                "rscluster",
+								"provider_config_key": "aws",
+								"schema_version":      0,
+								"type":                "aws_redshift_cluster",
+							},
+							{
+								"address": "aws_redshift_logging.rscluster-logging",
+								"expressions": {
+									"cluster_identifier": {
+										"references": [
+											"aws_redshift_cluster.rscluster.id",
+											"aws_redshift_cluster.rscluster",
+										],
+									},
+									"log_destination_type": {
+										"constant_value": "cloudwatch",
+									},
+									"log_exports": {
+										"constant_value": [
+											"connectionlog",
+											"userlog",
+										],
+									},
+								},
+								"mode":                "managed",
+								"name":                "rscluster-logging",
+								"provider_config_key": "aws",
+								"schema_version":      0,
+								"type":                "aws_redshift_logging",
+							},
+						],
 					},
-					"mode":                "managed",
-					"name":                "rscluster",
-					"provider_config_key": "aws",
-					"schema_version":      0,
-					"type":                "aws_redshift_cluster",
+					"source": "./redshift-cluster",
 				},
-			],
+			},
 		},
 	},
 	"format_version": "1.2",
 	"planned_values": {
 		"root_module": {
-			"resources": [
+			"child_modules": [
 				{
-					"address":        "aws_redshift_cluster.rscluster",
-					"mode":           "managed",
-					"name":           "rscluster",
-					"provider_name":  "registry.terraform.io/hashicorp/aws",
-					"schema_version": 0,
-					"sensitive_values": {
-						"cluster_nodes":          [],
-						"iam_roles":              [],
-						"logging":                [],
-						"master_password":        true,
-						"snapshot_copy":          [],
-						"tags_all":               {},
-						"vpc_security_group_ids": [],
-					},
-					"type": "aws_redshift_cluster",
-					"values": {
-						"allow_version_upgrade":                true,
-						"apply_immediately":                    false,
-						"automated_snapshot_retention_period":  10,
-						"availability_zone_relocation_enabled": false,
-						"cluster_identifier":                   "tf-redshift-cluster",
-						"cluster_type":                         "single-node",
-						"cluster_version":                      "1.0",
-						"database_name":                        "newdb",
-						"elastic_ip":                           null,
-						"encrypted":                            false,
-						"enhanced_vpc_routing":                 true,
-						"final_snapshot_identifier":            null,
-						"maintenance_track_name":               "current",
-						"manage_master_password":               null,
-						"manual_snapshot_retention_period":     -1,
-						"master_password":                      "REDACTED_SENSITIVE",
-						"master_username":                      "exampleuser",
-						"multi_az":                             false,
-						"node_type":                            "dc1.large",
-						"number_of_nodes":                      1,
-						"owner_account":                        null,
-						"port":                                 5439,
-						"publicly_accessible":                  true,
-						"skip_final_snapshot":                  false,
-						"snapshot_arn":                         null,
-						"snapshot_cluster_identifier":          null,
-						"snapshot_identifier":                  null,
-						"tags":                                 null,
-						"timeouts":                             null,
-					},
+					"address": "module.redshift-cluster",
+					"resources": [
+						{
+							"address":        "module.redshift-cluster.aws_redshift_cluster.rscluster",
+							"mode":           "managed",
+							"name":           "rscluster",
+							"provider_name":  "registry.terraform.io/hashicorp/aws",
+							"schema_version": 0,
+							"sensitive_values": {
+								"cluster_nodes":          [],
+								"iam_roles":              [],
+								"logging":                [],
+								"master_password":        true,
+								"snapshot_copy":          [],
+								"tags_all":               {},
+								"vpc_security_group_ids": [],
+							},
+							"type": "aws_redshift_cluster",
+							"values": {
+								"allow_version_upgrade":                true,
+								"apply_immediately":                    false,
+								"automated_snapshot_retention_period":  10,
+								"availability_zone_relocation_enabled": false,
+								"cluster_identifier":                   "tf-redshift-cluster",
+								"cluster_type":                         "single-node",
+								"cluster_version":                      "1.0",
+								"database_name":                        "newdb",
+								"elastic_ip":                           null,
+								"encrypted":                            false,
+								"enhanced_vpc_routing":                 true,
+								"final_snapshot_identifier":            null,
+								"maintenance_track_name":               "current",
+								"manage_master_password":               null,
+								"manual_snapshot_retention_period":     -1,
+								"master_password":                      "REDACTED_SENSITIVE",
+								"master_username":                      "exampleuser",
+								"multi_az":                             false,
+								"node_type":                            "dc1.large",
+								"number_of_nodes":                      1,
+								"owner_account":                        null,
+								"port":                                 5439,
+								"publicly_accessible":                  true,
+								"skip_final_snapshot":                  false,
+								"snapshot_arn":                         null,
+								"snapshot_cluster_identifier":          null,
+								"snapshot_identifier":                  null,
+								"tags":                                 null,
+								"timeouts":                             null,
+							},
+						},
+						{
+							"address":        "module.redshift-cluster.aws_redshift_logging.rscluster-logging",
+							"mode":           "managed",
+							"name":           "rscluster-logging",
+							"provider_name":  "registry.terraform.io/hashicorp/aws",
+							"schema_version": 0,
+							"sensitive_values": {
+								"log_exports": [
+									false,
+									false,
+								],
+							},
+							"type": "aws_redshift_logging",
+							"values": {
+								"bucket_name":          null,
+								"log_destination_type": "cloudwatch",
+								"log_exports": [
+									"connectionlog",
+									"userlog",
+								],
+								"s3_key_prefix": null,
+							},
+						},
+					],
 				},
 			],
 		},
 	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "module.redshift-cluster.aws_redshift_cluster.rscluster",
+		},
+	],
 	"resource_changes": [
 		{
-			"address": "aws_redshift_cluster.rscluster",
+			"address": "module.redshift-cluster.aws_redshift_cluster.rscluster",
 			"change": {
 				"actions": [
 					"create",
@@ -317,12 +439,51 @@ raw = {
 				"before":           null,
 				"before_sensitive": false,
 			},
-			"mode":          "managed",
-			"name":          "rscluster",
-			"provider_name": "registry.terraform.io/hashicorp/aws",
-			"type":          "aws_redshift_cluster",
+			"mode":           "managed",
+			"module_address": "module.redshift-cluster",
+			"name":           "rscluster",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_redshift_cluster",
+		},
+		{
+			"address": "module.redshift-cluster.aws_redshift_logging.rscluster-logging",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"bucket_name":          null,
+					"log_destination_type": "cloudwatch",
+					"log_exports": [
+						"connectionlog",
+						"userlog",
+					],
+					"s3_key_prefix": null,
+				},
+				"after_sensitive": {
+					"log_exports": [
+						false,
+						false,
+					],
+				},
+				"after_unknown": {
+					"cluster_identifier": true,
+					"id":                 true,
+					"log_exports": [
+						false,
+						false,
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":           "managed",
+			"module_address": "module.redshift-cluster",
+			"name":           "rscluster-logging",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_redshift_logging",
 		},
 	],
 	"terraform_version": "1.9.4",
-	"timestamp":         "2024-08-13T06:12:56Z",
+	"timestamp":         "2024-08-13T06:18:44Z",
 }

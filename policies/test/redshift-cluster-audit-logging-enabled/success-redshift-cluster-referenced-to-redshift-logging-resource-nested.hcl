@@ -1,13 +1,13 @@
 mock "tfplan/v2" {
 	module {
-		source = "./mocks/policy-failure-redshift-cluster-with-no-logging-attribute/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-success-redshift-cluster-referenced-to-redshift-logging-resource-nested/mock-tfplan-v2.sentinel"
 	}
 }
 
 
 mock "tfconfig/v2" {
 	module {
-		source = "./mocks/policy-failure-redshift-cluster-with-no-logging-attribute/mock-tfconfig-v2.sentinel"
+		source = "./mocks/policy-success-redshift-cluster-referenced-to-redshift-logging-resource-nested/mock-tfconfig-v2.sentinel"
 	}
 }
 
@@ -24,6 +24,6 @@ mock "report" {
 
 test {
 	rules = {
-		main = false
+		main = true
 	}
 }
