@@ -36,6 +36,15 @@ The following FSBP standards have equivalent Sentinel policies written for them.
 Sentinel policies are only enforced in the context of a given Terraform run. The following FSBP standards can't be implemented directly using Sentinel because the evaluation result of such policies depends on the remote state of resources present in AWS. 
 To remediate such violations, we added the following terraform configs which when applied guarantees compliance against a specific FSBP standard.
 
+### Policies that are not implemented because it requires tfconfig/v2 resources
+
+The policies that require tfconfig/v2 resources can only be implemented partially using Sentinel. Hence the policies that are mentioned below will not be implemented.
+
+| Policy                                               | Reason                                                                                                                                                              |
+|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [[Redshift.4] Amazon Redshift clusters should have audit logging enabled](https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-4)                     |   The redshift cluster should be referenced to the resource of type aws_redshift_logging to enable audit logging. |
+| [[Redshift.15] Redshift security groups should allow ingress on the cluster port only from restricted origins](https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-15)                     |   The redshift cluster attribute vpc_security_group_ids should be referenced to the VPC Security Group resources. |                                                                                                                              
+
 ### Unsupported policies
 
 The following policies are not supported because they currently cant be implemented using Sentinel policies or manually applying terraform configs.

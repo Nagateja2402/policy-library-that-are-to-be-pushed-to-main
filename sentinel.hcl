@@ -13,11 +13,6 @@ policy "redshift-cluster-audit-logging-enabled" {
  enforcement_level = "advisory"
 }
 
-policy "redshift-cluster-enhanced-vpc-routing-enabled" {
- source = "./policies/redshift-cluster-enhanced-vpc-routing-enabled.sentinel"
- enforcement_level = "advisory"
-}
-
 policy "redshift-cluster-default-admin-check" {
  source = "./policies/redshift-cluster-default-admin-check.sentinel"
  enforcement_level = "advisory"
