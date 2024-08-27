@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
 	module {
-		source = "./mocks/policy-failure-redshift-cluster-with-default-admin-username/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-failure-aws-macie-account-with-status-set-to-paused/mock-tfplan-v2.sentinel"
 	}
 }
 

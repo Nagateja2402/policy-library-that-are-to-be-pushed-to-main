@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
 	module {
-		source = "./mocks/policy-failure-redshift-cluster-with-no-master-username-attribute/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-success-aws-macie-account-with-status-set-to-enabled/mock-tfplan-v2.sentinel"
 	}
 }
 
@@ -18,6 +18,6 @@ mock "report" {
 
 test {
 	rules = {
-		main = false
+		main = true
 	}
 }
