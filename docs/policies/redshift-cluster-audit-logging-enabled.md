@@ -1,22 +1,37 @@
-# Policy heading goes here
+# AWS Redshift Cluster should have the enable attribute set to true in logging or referenced to the resource 'aws_redshift_logging'
 
-| Provider            | Category     |
-|---------------------|--------------|
-| Amazon Web Services | CSP category |
+| Provider            | Category  |
+| ------------------- | --------  |
+| Amazon Web Services |  Security |
 
 ## Description
 
+This control checks whether an Amazon Redshift cluster has audit logging enabled.
+
+Amazon Redshift audit logging provides additional information about connections and user activities in your cluster. This data can be stored and secured in Amazon S3 and can be helpful in security audits and investigations. For more information, see Database audit logging in the Amazon Redshift Management Guide.
+
+This rule is covered by the [redshift-cluster-audit-logging-enabled](../../policies/redshift-cluster-audit-logging-enabled.sentinel) policy.
+
 ## Policy Results (Pass)
+
 ```bash
 trace:
-      policy.sentinel:72:1 - Rule "main"
-        Description:
-          This is a test policy
+      Pass - redshift-cluster-audit-logging-enabled.sentinel
 
-        Value:
-          true
+      Description:
+        This policy checks if resources of type 'aws_redshift_cluster' have the
+        enable attribute set to true in logging or referenced to the
+        resource 'aws_redshift_logging'
 
-      policy.sentinel:43:1 - Rule "test_rule_exists"
+      Print messages:
+
+      → → Overall Result: true
+
+      This result means that all resources have passed the policy check for the policy redshift-cluster-public-access-check.
+
+      ✓ Found 0 resource violations
+
+      redshift-cluster-audit-logging-enabled.sentinel:128:1 - Rule "main"
         Value:
           true
 ```
@@ -24,16 +39,31 @@ trace:
 ---
 
 ## Policy Results (Fail)
+
 ```bash
 trace:
-      policy.sentinel:72:1 - Rule "main"
-        Description:
-          This is a test policy
+      Fail - redshift-cluster-audit-logging-enabled.sentinel
 
-        Value:
-          false
+      Description:
+        This policy checks if resources of type 'aws_redshift_cluster' have the
+        enable attribute set to true in logging or referenced to the
+        resource 'aws_redshift_logging'
 
-      policy.sentinel:43:1 - Rule "test_rule_exists"
+      Print messages:
+
+      → → Overall Result: false
+
+      This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy redshift-cluster-public-access-check.
+
+      Found 1 resource violations
+
+      → Module name: root
+        ↳ Resource Address: aws_redshift_cluster.rscluster
+          | ✗ failed
+          | Parameter 'require_ssl' should be true for AWS Redshift Parameter Group. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshift-controls.html#redshift-2 for more details.
+
+
+      redshift-cluster-audit-logging-enabled.sentinel:128:1 - Rule "main"
         Value:
           false
 ```
