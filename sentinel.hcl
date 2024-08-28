@@ -27,3 +27,8 @@ policy "aws-macie-status-should-be-enabled" {
   source = "./policies/aws-macie-status-should-be-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "mq-auto-minor-version-upgrade-enabled" {
+  source = "./policies/mq-auto-minor-version-upgrade-enabled.sentinel"
+  enforcement_level = "advisory"
+}
