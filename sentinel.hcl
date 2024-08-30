@@ -32,3 +32,8 @@ policy "mq-auto-minor-version-upgrade-enabled" {
   source = "./policies/mq-auto-minor-version-upgrade-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "msk-in-cluster-node-require-encrypted-in-transit" {
+  source = "./policies/msk-in-cluster-node-require-encrypted-in-transit.sentinel"
+  enforcement_level = "advisory"
+}
