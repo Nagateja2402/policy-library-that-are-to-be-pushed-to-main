@@ -8,11 +8,6 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
-policy "redshift-cluster-audit-logging-enabled" {
- source = "./policies/redshift-cluster-audit-logging-enabled.sentinel"
- enforcement_level = "advisory"
-}
-
 policy "redshift-cluster-default-db-name-check" {
  source = "./policies/redshift-cluster-default-db-name-check.sentinel"
  enforcement_level = "advisory"
