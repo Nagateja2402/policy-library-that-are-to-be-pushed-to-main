@@ -32,3 +32,8 @@ policy "msk-in-cluster-node-require-encrypted-in-transit" {
   source = "./policies/msk-in-cluster-node-require-encrypted-in-transit.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "redshift-cluster-unrestricted-port-access-check" {
+  source = "./policies/redshift-cluster-unrestricted-port-access-check.sentinel"
+  enforcement_level = "advisory"
+}
