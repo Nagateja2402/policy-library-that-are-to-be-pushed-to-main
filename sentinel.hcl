@@ -37,3 +37,8 @@ policy "redshift-cluster-unrestricted-port-access-check" {
   source = "./policies/redshift-cluster-unrestricted-port-access-check.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "rds-cluster-encrypted-at-rest" {
+  source = "./policies/rds-cluster-encrypted-at-rest.sentinel"
+  enforcement_level = "advisory"
+}
