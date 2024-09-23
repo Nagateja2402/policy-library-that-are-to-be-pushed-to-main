@@ -42,3 +42,7 @@ policy "rds-cluster-encrypted-at-rest" {
   source = "./policies/rds-cluster-encrypted-at-rest.sentinel"
   enforcement_level = "advisory"
 }
+policy "rds-cluster-default-admin-check" {
+  source = "./policies/rds-cluster-default-admin-check.sentinel"
+  enforcement_level = "advisory"
+}
