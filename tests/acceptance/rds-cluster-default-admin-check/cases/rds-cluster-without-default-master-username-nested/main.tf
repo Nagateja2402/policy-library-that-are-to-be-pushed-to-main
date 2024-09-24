@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 module "rds-clusters" {
-  source = "./rds-clusters"
+  source                   = "./rds-clusters"
   master_username_variable = "myadminuser"
 }

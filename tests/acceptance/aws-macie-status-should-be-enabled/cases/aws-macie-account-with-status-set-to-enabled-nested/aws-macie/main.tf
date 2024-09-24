@@ -70,7 +70,7 @@ resource "aws_kms_key" "example" {
 
 resource "aws_macie2_account" "example" {
   finding_publishing_frequency = "FIFTEEN_MINUTES"
-  status = var.aws_macie_status
+  status                       = var.aws_macie_status
 }
 
 resource "aws_macie2_classification_export_configuration" "example" {

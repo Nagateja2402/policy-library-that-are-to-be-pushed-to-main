@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 module "redshift-cluster" {
-    source = "./redshift-clusters"
-    cidr_block_variable = "0.0.0.0/0"
+  source              = "./redshift-clusters"
+  cidr_block_variable = "0.0.0.0/0"
 }

@@ -21,5 +21,5 @@ resource "aws_rds_cluster" "default" {
   master_password         = "must_be_eight_characters"
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
-  storage_encrypted = true
+  storage_encrypted       = true
 }

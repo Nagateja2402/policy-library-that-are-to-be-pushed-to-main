@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 module "msk-clusters" {
-  source = "./msk-clusters"
+  source              = "./msk-clusters"
   in_cluster_variable = true
 }

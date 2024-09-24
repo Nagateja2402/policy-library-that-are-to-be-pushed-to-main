@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 module "aws_macie" {
-  source = "./aws-macie"
+  source           = "./aws-macie"
   aws_macie_status = "ENABLED"
 }

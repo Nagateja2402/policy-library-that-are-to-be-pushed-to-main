@@ -12,6 +12,6 @@ provider "aws" {
 }
 
 module "rds-clusters" {
-  source = "./rds-clusters"
+  source                     = "./rds-clusters"
   storage_encrypted_variable = true
 }

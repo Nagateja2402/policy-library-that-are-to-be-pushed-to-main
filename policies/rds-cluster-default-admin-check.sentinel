@@ -11,8 +11,8 @@ import "collection/maps" as maps
 const = {
 	"policy_name":                   "rds-cluster-default-admin-check",
 	"message":                       "Attribute 'master_username' should not be 'admin' (default value) for AWS RDS Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-24 for more details.",
-	"resource_aws_rds_cluster": "aws_rds_cluster",
-	"master_username_default_value":   "admin",
+	"resource_aws_rds_cluster":      "aws_rds_cluster",
+	"master_username_default_value": "admin",
 }
 
 # Functions

@@ -110,7 +110,7 @@ resource "aws_msk_cluster" "example" {
   encryption_info {
     encryption_at_rest_kms_key_arn = aws_kms_key.kms.arn
     encryption_in_transit {
-      
+
     }
   }
 

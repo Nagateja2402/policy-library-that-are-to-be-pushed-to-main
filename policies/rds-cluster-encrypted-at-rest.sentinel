@@ -9,8 +9,8 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                   "rds-cluster-encrypted-at-rest",
-	"message":                       "Attribute 'storage_encrypted' should be true for AWS RDS Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-27 for more details.",
+	"policy_name":              "rds-cluster-encrypted-at-rest",
+	"message":                  "Attribute 'storage_encrypted' should be true for AWS RDS Cluster. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-27 for more details.",
 	"resource_aws_rds_cluster": "aws_rds_cluster",
 }
 

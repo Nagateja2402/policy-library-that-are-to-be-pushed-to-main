@@ -9,8 +9,8 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                   "mq-auto-minor-version-upgrade-enabled",
-	"message":                       "Attribute 'auto_minor_version_upgrade' should be true for AWS MQ Broker. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-3 for more details.",
+	"policy_name":            "mq-auto-minor-version-upgrade-enabled",
+	"message":                "Attribute 'auto_minor_version_upgrade' should be true for AWS MQ Broker. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/mq-controls.html#mq-3 for more details.",
 	"resource_aws_mq_broker": "aws_mq_broker",
 }
 

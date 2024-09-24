@@ -13,7 +13,7 @@ resource "aws_redshift_cluster" "rscluster" {
   automated_snapshot_retention_period = 10
   allow_version_upgrade               = true
   enhanced_vpc_routing                = true
-  vpc_security_group_ids = [ aws_security_group.new_security_group.id ]
+  vpc_security_group_ids              = [aws_security_group.new_security_group.id]
 }
 
 resource "aws_security_group" "new_security_group" {

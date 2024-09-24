@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 module "mq-resource" {
-  source = "./mq-resources"
+  source                              = "./mq-resources"
   auto_minor_version_upgrade_variable = true
 }

@@ -8,11 +8,6 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
-policy "redshift-cluster-default-db-name-check" {
- source = "./policies/redshift-cluster-default-db-name-check.sentinel"
- enforcement_level = "advisory"
-}
-
 policy "redshift-cluster-should-be-encrypted-at-rest" {
   source = "./policies/redshift-cluster-should-be-encrypted-at-rest.sentinel"
   enforcement_level = "advisory"
@@ -44,5 +39,10 @@ policy "rds-cluster-encrypted-at-rest" {
 }
 policy "rds-cluster-default-admin-check" {
   source = "./policies/rds-cluster-default-admin-check.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "rds-instance-default-admin-check" {
+  source = "./policies/rds-instance-default-admin-check.sentinel"
   enforcement_level = "advisory"
 }

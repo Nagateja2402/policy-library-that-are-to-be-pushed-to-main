@@ -34,10 +34,10 @@ resource "aws_mq_broker" "example" {
     revision = aws_mq_configuration.test.latest_revision
   }
 
-  engine_type        = "ActiveMQ"
-  engine_version     = "5.17.6"
-  host_instance_type = "mq.t2.micro"
-  security_groups    = [aws_security_group.example.id]
+  engine_type                = "ActiveMQ"
+  engine_version             = "5.17.6"
+  host_instance_type         = "mq.t2.micro"
+  security_groups            = [aws_security_group.example.id]
   auto_minor_version_upgrade = var.auto_minor_version_upgrade_variable
   user {
     username = "ExampleUser"

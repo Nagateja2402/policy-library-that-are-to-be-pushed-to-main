@@ -13,7 +13,7 @@ resource "aws_redshift_cluster" "rscluster" {
   automated_snapshot_retention_period = 10
   allow_version_upgrade               = true
   enhanced_vpc_routing                = true
-  vpc_security_group_ids = [ aws_security_group.new_security_group.id ]
+  vpc_security_group_ids              = [aws_security_group.new_security_group.id]
 }
 
 resource "aws_security_group" "new_security_group" {
@@ -27,7 +27,7 @@ resource "aws_security_group" "new_security_group" {
 
 resource "aws_vpc_security_group_ingress_rule" "new_ingress_rule" {
   security_group_id = aws_security_group.new_security_group.id
-  cidr_ipv6 =     "::/0"
+  cidr_ipv6         = "::/0"
   from_port         = 443
   ip_protocol       = "tcp"
   to_port           = 443

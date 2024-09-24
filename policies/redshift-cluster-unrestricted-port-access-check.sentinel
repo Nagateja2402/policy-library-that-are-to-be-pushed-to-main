@@ -101,7 +101,7 @@ is_aws_security_group_compliant = rule {
 }
 
 # Checks if 'aws_vpc_security_group_ingress_rule' resources block ingress traffic
-# from unknown sources to redshift cluster ports 
+# from unknown sources to redshift cluster ports
 is_aws_vpc_security_group_ingress_rule_compliant = rule {
 	aws_vpc_security_group_ingress_rule_violations is empty
 }

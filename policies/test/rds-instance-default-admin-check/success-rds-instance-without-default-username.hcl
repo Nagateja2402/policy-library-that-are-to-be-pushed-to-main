@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
 	module {
-		source = "./mocks/policy-success-redshift-cluster-without-default-db-name/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-success-rds-instance-without-default-username/mock-tfplan-v2.sentinel"
 	}
 }
 
