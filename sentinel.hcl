@@ -46,3 +46,8 @@ policy "rds-instance-default-admin-check" {
   source = "./policies/rds-instance-default-admin-check.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "rds-aurora-mysql-audit-logging-enabled" {
+  source = "./policies/rds-aurora-mysql-audit-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
