@@ -33,12 +33,38 @@ else
 	@cp example/policy.sentinel policies/$(name).sentinel
 	@mkdir -p policies/test
 	@mkdir -p policies/test/$(name)
+	@mkdir -p tests/acceptance
+	@mkdir -p tests/acceptance/${name}
+	@mkdir -p tests/acceptance/${name}/cases
+	@touch tests/acceptance/${name}/test-config.hcl
 	@cp -r example/test/policy/* policies/test/$(name)
 	@cp example/policy.md docs/policies/$(name).md
 	@echo Policy written to policies/$(name)/$(name).sentinel
 	@echo Done.
 endif
 .PHONY: generate-policy
+
+add-acceptance-test:
+ifeq ($(strip $(test-name)),) 
+	@echo flag needs an argument: test-name
+endif
+ifeq ($(strip $(policy-name)),) 
+	@echo flag needs an argument: policy-name
+endif
+ifeq ($(strip $(tf-config-path)),) 
+	@echo flag needs an argument: tf-config-path
+	@echo Usage: make generate test-name=acceptance-test-for-policy policy-name=test-policy-name tf-config-path="path-to-config"
+else
+	@mkdir -p tests/acceptance/${policy-name}/cases/${test-name}
+	@touch tests/acceptance/${policy-name}/cases/${test-name}/main.tf
+	@touch tests/acceptance/${policy-name}/cases/${test-name}/backend.tf
+	@echo "tests/acceptance/${policy-name}/cases/${test-name}/main.tf"
+	@echo 'terraform {\n	cloud {\n		workspaces {\n 		name = "${policy-name}"\n		}\n	}\n}' > tests/acceptance/${policy-name}/cases/${test-name}/backend.tf
+	@cp "${tf-config-path}/main.tf" "tests/acceptance/${policy-name}/cases/${test-name}/main.tf"
+	@echo test case written successfully
+	@echo Done.
+endif
+.PHONY: add-acceptance-test
 
 go-private:
 	@echo export GOPRIVATE="$(GOPRIVATE)"

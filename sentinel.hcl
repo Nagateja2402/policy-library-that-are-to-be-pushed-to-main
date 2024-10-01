@@ -8,11 +8,6 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
-policy "redshift-cluster-should-be-encrypted-at-rest" {
-  source = "./policies/redshift-cluster-should-be-encrypted-at-rest.sentinel"
-  enforcement_level = "advisory"
-}
-
 policy "aws-macie-status-should-be-enabled" {
   source = "./policies/aws-macie-status-should-be-enabled.sentinel"
   enforcement_level = "advisory"
@@ -49,5 +44,10 @@ policy "rds-instance-default-admin-check" {
 
 policy "rds-aurora-mysql-audit-logging-enabled" {
   source = "./policies/rds-aurora-mysql-audit-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "dms-replication-instances-should-not-be-public" {
+  source = "./policies/dms-replication-instances-should-not-be-public.sentinel"
   enforcement_level = "advisory"
 }
