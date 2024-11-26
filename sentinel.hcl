@@ -2,13 +2,56 @@ import "module" "report" {
   source = "https://raw.githubusercontent.com/hashicorp/terraform-sentinel-policies/main/common-functions/report/report.sentinel"
 }
 
-// Replace the source with the appropriate plugin binary
-// based on the environment where you run policies.
 import "plugin" "tfresources" {
-  source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
+  source = "./plugins/darwin/arm64/sentinel-plugin-tfresources"
 }
 
-policy "test-sentinel-policy" {
-  source = "./policies/test-sentinel-policy.sentinel"
+policy "autoscaling-group-should-use-launch-templates" {
+  source = "./policies/autoscaling-group-should-use-launch-templates.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "backup-recovery-point-encrypted" {
+  source = "./policies/backup-recovery-point-encrypted.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ec2-client-vpn-connection-log-enabled" {
+  source = "./policies/ec2-client-vpn-connection-log-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ec2-ebs-encryption-enabled" {
+  source = "./policies/ec2-ebs-encryption-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ec2-launch-template-imdsv2-check" {
+  source = "./policies/ec2-launch-template-imdsv2-check.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ec2-metadata-imdsv2-required" {
+  source = "./policies/ec2-metadata-imdsv2-required.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ec2-network-acl" {
+  source = "./policies/ec2-network-acl.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ec2-vpc-default-security-group-no-traffic" {
+  source = "./policies/ec2-vpc-default-security-group-no-traffic.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ec2-vpc-flow-logging-enabled" {
+  source = "./policies/ec2-vpc-flow-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ec2-vpn-connection-logging-enabled" {
+  source = "./policies/ec2-vpn-connection-logging-enabled.sentinel"
   enforcement_level = "advisory"
 }
