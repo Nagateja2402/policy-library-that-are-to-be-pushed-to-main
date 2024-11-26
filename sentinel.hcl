@@ -31,6 +31,11 @@ policy "ec2-launch-template-imdsv2-check" {
   enforcement_level = "advisory"
 }
 
+policy "ec2-launch-template-public-ip-disabled" {
+  source = "./policies/ec2-launch-template-public-ip-disabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ec2-metadata-imdsv2-required" {
   source = "./policies/ec2-metadata-imdsv2-required.sentinel"
   enforcement_level = "advisory"
