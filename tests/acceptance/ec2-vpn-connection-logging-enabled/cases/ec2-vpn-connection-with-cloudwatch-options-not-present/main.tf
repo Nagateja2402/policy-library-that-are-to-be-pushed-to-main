@@ -55,7 +55,7 @@ resource "aws_vpn_connection" "example" {
     }
   }
   tunnel2_log_options {
-    
+
   }
   tags = {
     Name = "terraform_ipsec_vpn_example"

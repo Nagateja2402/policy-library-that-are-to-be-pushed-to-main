@@ -1,4 +1,4 @@
-# AWS Backup Framework Recovery Pointshould be encrypted at rest
+# AWS Backup Framework Recovery Point should be encrypted at rest
 
 | Provider            | Category  |
 | ------------------- | --------  |

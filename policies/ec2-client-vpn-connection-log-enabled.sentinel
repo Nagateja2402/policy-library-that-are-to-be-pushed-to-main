@@ -9,8 +9,8 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                    "ec2-client-vpn-connection-log-enabled",
-	"message":                        "AWS EC2 Client VPN endpoints should have client connection logging enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-51 for more details.",
+	"policy_name": "ec2-client-vpn-connection-log-enabled",
+	"message":     "AWS EC2 Client VPN endpoints should have client connection logging enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-51 for more details.",
 	"resource_aws_ec2_client_vpn_endpoint": "aws_ec2_client_vpn_endpoint",
 	"enabled": "enabled",
 }

@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 module "ec2-launch-templates" {
-  source = "./ec2-launch-templates"
+  source            = "./ec2-launch-templates"
   http_tokens_value = "required"
 }

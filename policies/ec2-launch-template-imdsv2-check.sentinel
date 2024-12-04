@@ -11,11 +11,11 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name": "ec2-launch-template-imdsv2-check",
-	"message":     "Attribute 'http_options' must be set to 'required' in 'metadata_options' for 'aws_launch_template' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-170 for more details.",
+	"policy_name":                  "ec2-launch-template-imdsv2-check",
+	"message":                      "Attribute 'http_options' must be set to 'required' in 'metadata_options' for 'aws_launch_template' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-170 for more details.",
 	"resource_aws_launch_template": "aws_launch_template",
-    "http_tokens": "http_tokens",
-    "required": "required",
+	"http_tokens":                  "http_tokens",
+	"required":                     "required",
 }
 
 # Functions
@@ -23,9 +23,9 @@ const = {
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
 		metadata_options_values = maps.get(res, "values.metadata_options", [])
-        if metadata_options_values is empty {
-            return false
-        }
+		if metadata_options_values is empty {
+			return false
+		}
 		return maps.get(metadata_options_values[0], const.http_tokens, "optional") is const.required
 	})
 }

@@ -9,9 +9,9 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                    "backup-recovery-point-encrypted",
-	"message":                        "AWS Backup Framework Recovery Point must be encrypted at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/backup-controls.html#backup-1 for more details.",
-	"resource_aws_backup_framework": "aws_backup_framework",
+	"policy_name":                     "backup-recovery-point-encrypted",
+	"message":                         "AWS Backup Framework Recovery Point must be encrypted at rest. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/backup-controls.html#backup-1 for more details.",
+	"resource_aws_backup_framework":   "aws_backup_framework",
 	"BACKUP_RECOVERY_POINT_ENCRYPTED": "BACKUP_RECOVERY_POINT_ENCRYPTED",
 	"name": "name",
 }

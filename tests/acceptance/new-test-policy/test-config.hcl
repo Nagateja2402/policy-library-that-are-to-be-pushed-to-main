@@ -8,3 +8,11 @@ case "new-random-test-case" {
 		result = false
 	}
 }
+
+
+case "new-test-case-1" {
+	path = "./cases/new-test-case-1"
+	expectation {
+		result = true
+	}
+}

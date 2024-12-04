@@ -56,7 +56,7 @@ resource "aws_vpn_connection" "example" {
   }
   tunnel2_log_options {
     cloudwatch_log_options {
-      
+
     }
   }
   tags = {

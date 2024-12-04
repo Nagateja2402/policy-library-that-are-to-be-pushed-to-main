@@ -3,6 +3,6 @@ provider "aws" {
 }
 
 module "ec2-client-vpn-endpoints" {
-  source = "./ec2-client-vpn-endpoints"
+  source           = "./ec2-client-vpn-endpoints"
   enabled_variable = true
 }

@@ -16,7 +16,7 @@ resource "aws_autoscaling_group" "bar" {
   desired_capacity          = 4
   force_delete              = true
   placement_group           = aws_placement_group.test.id
-  availability_zones = [ "us-west-2"]
+  availability_zones        = ["us-west-2"]
   instance_maintenance_policy {
     min_healthy_percentage = 90
     max_healthy_percentage = 120

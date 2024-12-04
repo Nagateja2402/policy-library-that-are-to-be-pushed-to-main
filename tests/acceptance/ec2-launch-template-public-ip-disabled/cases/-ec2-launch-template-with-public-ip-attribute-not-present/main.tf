@@ -62,9 +62,9 @@ resource "aws_launch_template" "foo" {
   }
 
   network_interfaces {
-    
+
   }
-  
+
   metadata_options {
     http_endpoint               = "enabled"
     http_tokens                 = "required"

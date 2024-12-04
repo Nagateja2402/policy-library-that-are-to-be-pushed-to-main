@@ -9,11 +9,11 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                    "ec2-vpn-connection-logging-enabled",
-	"message":                        "AWS Site-to-Site VPN Connection should have the AWS Cloudwatch logs enabled for both ends. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-171 for more details.",
+	"policy_name":                 "ec2-vpn-connection-logging-enabled",
+	"message":                     "AWS Site-to-Site VPN Connection should have the AWS Cloudwatch logs enabled for both ends. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ec2-controls.html#ec2-171 for more details.",
 	"resource_aws_vpn_connection": "aws_vpn_connection",
-	"cloudwatch_log_options": "cloudwatch_log_options",
-	"log_enabled": "log_enabled",
+	"cloudwatch_log_options":      "cloudwatch_log_options",
+	"log_enabled":                 "log_enabled",
 }
 
 # Functions
@@ -27,7 +27,7 @@ get_violations = func(resources) {
 }
 
 check_logging_enabled_in_tunnel = func(log_values) {
-	if log_values is empty or log_values is not defined{
+	if log_values is empty or log_values is not defined {
 		return false
 	}
 	cloudwatch_log_options_values = maps.get(log_values, const.cloudwatch_log_options, [])
