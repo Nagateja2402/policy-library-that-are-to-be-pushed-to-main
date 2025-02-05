@@ -1,4 +1,0 @@
-resource "aws_ebs_volume" "this" {
-  availability_zone = "us-west-2a"
-  size              = 40
-}
