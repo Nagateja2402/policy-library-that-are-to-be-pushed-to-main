@@ -1,5 +1,5 @@
 import "module" "report" {
-  source = "https://raw.githubusercontent.com/hashicorp/terraform-sentinel-policies/main/common-functions/report/report.sentinel"
+  source = "./modules/mocks/report/report.sentinel"
 }
 
 import "plugin" "tfresources" {
